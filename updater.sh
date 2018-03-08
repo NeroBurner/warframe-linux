@@ -4,7 +4,7 @@ EXEPREFIX="$WINEPREFIX/drive_c/Program Files/Warframe/Downloaded/Public"
 
 WINECMD=${WINE-wine}
 
-wget -qN http://content.warframe.com/index.txt.lzma
+wget -qN http://origin.warframe.com/index.txt.lzma
 unlzma -f index.txt.lzma
 
 echo "*********************"
