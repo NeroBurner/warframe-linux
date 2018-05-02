@@ -1,7 +1,7 @@
 ##  Not supported on Solus because for some stupid reason Solus doesn't have xterm when literally every other distro does.
 
 ## If you're getting crashes  
-Report them on winehq. Nothing on my launcher can fix what wine breaks. All this does is set up a prefix and update/download/launch the game.  If you find a missing override or library, report it, but do not report crashes here without an answer.  
+DO NOT OPEN GITHUB ISSUES FOR CRASHES. Report them on winehq. Nothing on my launcher can fix what wine breaks. All my launcher does is set up a prefix and update/download/launch the game.  If you find a missing override or library, report it, but do not report crashes here.  
 
 
 ## Installation Instructions
