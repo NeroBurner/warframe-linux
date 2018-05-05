@@ -2,6 +2,19 @@
 # exit on first error
 set -e
 
+# If we are not already running in a terminal
+if [ ! -t 1 ]; then
+	# Find a suitable one
+	for i in x-terminal-emulator xterm gnome-terminal; do
+		if which $i &>/dev/null; then
+			# And respawn ourself inside it
+			exec $i -e "$0" "$@"
+		fi
+	done
+
+	# Couldn't find a terminal to run in. Just continue.
+fi
+
 # create folders if they don't exist
 if [ ! -d "$WINEPREFIX/drive_c/Program Files/Warframe/Downloaded" ]; then
   mkdir -p "$WINEPREFIX/drive_c/Program Files/Warframe/Downloaded/Public"

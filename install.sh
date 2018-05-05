@@ -64,7 +64,9 @@ pushd "$WFDIR"
 cat > uninstall.sh <<EOF
 #!/bin/bash
 
-sudo rm -R /usr/bin/warframe
+if [ -e /usr/bin/warframe ]; then
+	sudo rm -R /usr/bin/warframe
+fi
 rm -R "\$HOME/Desktop/warframe.desktop" "$GAMEDIR" \\
       "\$HOME/.local/share/applications/warframe.desktop"
 echo "Warframe has been successfully removed."
@@ -100,15 +102,7 @@ export WINEDEBUG=$WINEDEBUG
 export WINEPREFIX="$WINEPREFIX"
 
 cd "$WFDIR"
-if [ ! -z "$@" ]; then
-    if [ "$@" = "-h" ] || [ "$@" = "--help" ]; then
-        xterm -bg black -fg white -hold -e "./updater.sh $@"
-    fi
-else
-    xterm -bg black -fg white -e "./updater.sh $@"
-fi
-
-
+exec ./updater.sh "\$@"
 EOF
 
 chmod a+x warframe.sh
@@ -134,7 +128,7 @@ function mkdesktop() {
 Encoding=UTF-8
 Name=Warframe
 GenericName=Warframe
-Exec="$WFDIR/warframe.sh" "\$@"
+Exec="$WFDIR/warframe.sh"
 Icon="$WFDIR/warframe.png"
 StartupNotify=true
 Terminal=false

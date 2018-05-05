@@ -1,5 +1,3 @@
-##  Not supported on Solus because for some stupid reason Solus doesn't have xterm when literally every other distro does.
-
 ## If you're getting crashes  
 DO NOT OPEN GITHUB ISSUES FOR CRASHES. Report them on winehq. Nothing on my launcher can fix what wine breaks. All my launcher does is set up a prefix and update/download/launch the game.  If you find a missing override or library, report it, but do not report crashes here.  
 
@@ -41,7 +39,7 @@ directory. Run `./install.sh --help` to see all available options.
   type "warframe" in a terminal
 ```
 
-5. The launcher will open and run in an xterm terminal. It will then launch two "black boxes", one after another. This is Warframe.exe double checking for missed updates, and then optimizing the game cache. Once these launch they will close by themselves, and the game will launch, then the xterm window will close.  
+5. The launcher will open and run in a terminal. It will then launch two "black boxes", one after another. This is Warframe.exe double checking for missed updates, and then optimizing the game cache. Once these launch they will close by themselves, and the game will launch, then the termnal window will close.
 
 ## Uninstallation/Removal Instructions
 This applies to non-lutris only: 
