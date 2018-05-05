@@ -1,11 +1,10 @@
-## If you're getting crashes  
-DO NOT OPEN GITHUB ISSUES FOR CRASHES. Report them on winehq. Nothing on my launcher can fix what wine breaks. All my launcher does is set up a prefix and update/download/launch the game.  If you find a missing override or library, report it, but do not report crashes here.  
-
-
 ## Installation Instructions
 
-Please be sure to install wine system dependencies. This can usually be achieved by installing wine on your system through your package manager.  Additional help can be found here:
-[How to get out of Wine Dependency Hell](https://www.gloriouseggroll.tv/how-to-get-out-of-wine-dependency-hell/)
+REQUIREMENTS:
+1. Please be sure to install wine system dependencies. This can usually be achieved by installing wine on your system through your package manager.  Additional help can be found here:
+[How to get out of Wine Dependency Hell](https://www.gloriouseggroll.tv/how-to-get-out-of-wine-dependency-hell/)  
+2. Please make sure your system has the wget and curl packages installed for your distro.  
+3. Please make sure your system has wine-staging and winetricks installed for your distro.  
 
 You will also need to install curl on your system for the updater to work.
 
