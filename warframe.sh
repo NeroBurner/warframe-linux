@@ -143,6 +143,9 @@ while [[ $# -gt 0 ]]; do
 		do_dxvk=true
 		disable_dxvk=true
 		;;
+		--full-update)
+		full_update=true
+		;;
 		--no-update)
 		do_update=false
 		;;
