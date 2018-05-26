@@ -515,6 +515,9 @@ if [ "$do_update" = true ] ; then
 	#$WINECMD "${WARFRAME}" -silent -log:/Preprocessing.log -dx10:1 -dx11:0 -threadedworker:1 -cluster:public -language:en -applet:/EE/Types/Framework/ContentUpdate
 
 	EXEPREFIX="${warframe_exe_base}"
+	if [ ! -d "${EXEPREFIX}" ]; then
+		mkdir -p "${EXEPREFIX}"
+	fi
 	# change directory into Downloaded dir
 	cd "${EXEPREFIX}"
 
@@ -653,6 +656,7 @@ if [ "$do_update" = true ] ; then
 			#show progress percentage for each downloading file
 			echo -ne "$PERCENT% ($CURRENT_SIZE/$TOTAL_SIZE) Downloading ${REMOTE_SIZE} ${RAW_FILENAME}                                   " "\r";
 
+			mkdir -p "$(dirname "${LOCAL_PATH}")"
 			#download file and replace old file
 			#keep wget as a backup in case curl fails
 			#wget -x -O "$EXEPREFIX$line" http://content.warframe.com$line
