@@ -267,13 +267,21 @@ if [ "$do_winetricks" = true ] ; then
 	echo "*************************************************"
 	echo "Installing Direct X."
 	echo "*************************************************"
+	# create download-dir if it does not exist yet
+	mkdir -p "${download_dir}"
+	# full path to directx installer
 	dx_redist="${download_dir}/directx_Jun2010_redist.exe"
 	if [ ! -f "${dx_redist}" ]; then
 		wget https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe -O "${dx_redist}"
 	fi
 	prefix_drive_c="${WINEPREFIX}/drive_c"
+	# create dx9 extraction dir if it does not yet exist
+	mkdir -p "${prefix_drive_c}/dx9"
+	# extract directx installer
 	WINEDEBUG=-all $WINECMD "${dx_redist}" /Q /T:C:\dx9
+	# install directx
 	WINEDEBUG=-all $WINECMD "${prefix_drive_c}/dx9/dx9/DXSETUP.EXE" /silent
+	# remove extracted folder
 	rm -R "${prefix_drive_c}/dx9"
 
 	echo "using winetricks to install needed packages"
