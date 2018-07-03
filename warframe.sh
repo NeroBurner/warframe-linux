@@ -466,48 +466,6 @@ if [ "$install_dxvk" = true ] ; then
 	echo "call setup_dxvk64"
 	bash dxvk/win64/setup_dxvk.sh
 	bash dxvk/win32/setup_dxvk.sh
-
-	echo "create 'winevulkan.json' file"
-	cat <<EOF > "${WINEPREFIX}/drive_c/windows/winevulkan.json"
-{
-    "file_format_version": "1.0.0",
-    "ICD": {
-        "library_path": "c:\\windows\\system32\\winevulkan.dll",
-        "api_version": "1.0.51"
-    }
-}
-EOF
-
-	echo "create registry entry for wine-vulkan"
-	reg_file="/tmp/vulkan.reg"
-	# transform absolute linux path to absolute Windows path for registy
-	# create registry file
-	cat <<EOF > "$reg_file"
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers]
-"C:\\\\Windows\\\\winevulkan.json"=dword:00000000
-[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]
-"C:\\\\Windows\\\\winevulkan.json"=dword:00000000
-EOF
-	# update registry to set warframe download folder and other wine options
-	$WINECMD regedit /S "${reg_file}"
-fi
-
-if [ "$disable_dxvk" = true ] ; then
-	reg_file="/tmp/vulkan.reg"
-	# transform absolute linux path to absolute Windows path for registy
-	# create registry file
-	cat <<EOF > "$reg_file"
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers]
-"C:\\\\Windows\\\\winevulkan.json"=-
-[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]
-"C:\\\\Windows\\\\winevulkan.json"=-
-EOF
-	# update registry to set warframe download folder and other wine options
-	$WINECMD regedit /S "${reg_file}"
 fi
 
 #############################################################
